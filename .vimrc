@@ -8,8 +8,8 @@ syntax on
 " set cursorline
 " 行番号を表示
  set number
-" タブを常に表示
-set showtabline=2
+" タブを常に表示(unite.vimで不要なんじゃね、と思い無効)
+" set showtabline=2
 " スワップファイルをつくらない
 set noswapfile
 " バックアップファイルをつくらない
@@ -59,3 +59,44 @@ filetype plugin indent on
 
 " let g:ref_alc_start_linenumber = 30
 " let g:ref_alc_encoding = 'cp932'
+
+
+" vim-ref の設定
+let g:ref_source_webdict_sites = {
+\  'je': {
+\    'url': 'http://dictionary.infoseek.ne.jp/jeword/%s',
+\  },
+\  'ej': {
+\    'url': 'http://dictionary.infoseek.ne.jp/ejword/%s',
+\  },
+\  'wiki': {
+\    'url': 'http://ja.wikipedia.org/wiki/%s',
+\  }
+\}
+let g:ref_source_webdict_sites.default = 'ej'
+
+function! g:ref_source_webdict_sites.je.filter(output)
+  return join(split(a:output, "\n")[15 :], "\n")
+endfunction
+function! g:ref_source_webdict_sites.ej.filter(output)
+  return join(split(a:output, "\n")[15 :], "\n")
+endfunction
+function! g:ref_source_webdict_sites.wiki.filter(output)
+  return join(split(a:output, "\n")[17 :], "\n")
+endfunction
+
+" unite の設定
+" let g:unite_enable_start_insert=1
+" バッファ一覧
+nnoremap <silent> ,ub :<C-u>Unite buffer<CR>
+" ファイル一覧
+nnoremap <silent> ,uf :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
+" レジスタ一覧
+nnoremap <silent> ,ur :<C-u>Unite -buffer-name=register register<CR>
+" 最近使用したファイル一覧
+nnoremap <silent> ,um :<C-u>Unite file_mru<CR>
+" 常用セット
+nnoremap <silent> ,uu :<C-u>Unite buffer file_mru<CR>
+" 全部のせ
+nnoremap <silent> ,ua :<C-u>UniteWithBufferDir -bufer-name=files buffer file_mru bookmark file<CR>
+
