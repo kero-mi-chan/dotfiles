@@ -31,3 +31,31 @@ set laststatus=2
 " .rbでタブ幅を2に変更
 au BufNewFile,BufRead *.rb set nowrap tabstop=2 shiftwidth=2 expandtab
 
+
+"-----------------------------------------------------------------------
+" Vundleの設定
+"-----------------------------------------------------------------------
+
+set nocompatible
+filetype off
+
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+Bundle 'gmarik/vundle'
+
+" 必要なものをここに追加
+Bundle 'vim-scripts/opsplorer'
+Bundle 'Shougo/neocomplcache'
+Bundle 'Shougo/unite.vim'
+Bundle 'thinca/vim-ref'
+Bundle 'thinca/vim-quickrun'
+
+filetype plugin indent on
+
+"-----------------------------------------------------------------------
+" プラグインの設定
+"-----------------------------------------------------------------------
+
+" let g:ref_alc_start_linenumber = 30
+" let g:ref_alc_encoding = 'cp932'
