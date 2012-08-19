@@ -1,0 +1,6 @@
+XTerm*utf8: 1
+xterm*VT100*utf8TItle: true
+XTerm*VT100*faceName: VLGothic
+XTerm*VT100*faceSize: 12
+XTerm*VT100*faceNameDoublesize: VLGothic
+XTerm*VT100*forcePackedFont: false
