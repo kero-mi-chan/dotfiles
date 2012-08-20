@@ -7,7 +7,9 @@ syntax on
 " カーソルを表示(しようと思ったけど、描画が劇的に遅くなったから停止)
 " set cursorline
 " 行番号を表示
- set number
+set number
+" 検索結果のハイライト
+set hlsearch
 " タブを常に表示(unite.vimで不要なんじゃね、と思い無効)
 " set showtabline=2
 " スワップファイルをつくらない
