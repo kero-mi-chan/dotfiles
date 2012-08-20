@@ -39,7 +39,7 @@ au BufNewFile,BufRead *.rb set nowrap tabstop=2 shiftwidth=2 expandtab
 set nocompatible
 filetype off
 
-set rtp+=~/.vim/bundle/vundle/
+set rtp+=~/.vim/vundle/
 call vundle#rc()
 
 Bundle 'gmarik/vundle'
