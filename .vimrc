@@ -4,13 +4,16 @@
 
 " エンコーディング
 set encoding=utf8
+" 80文字ラインを引く
+set textwidth=80
 " 構文ごとの色分け
 syntax on
 " カーソルを表示(しようと思ったけど、描画が劇的に遅くなったから停止)
 " set cursorline
 " 行番号を表示
 set number
-" 検索結果のハイライト
+" 検索結果のハイライト(大文字・小文字の区別をしない)
+set ignorecase
 set hlsearch
 " タブを常に表示(unite.vimで不要なんじゃね、と思い無効)
 " set showtabline=2
@@ -20,10 +23,16 @@ set noswapfile
 set nobackup
 " 自動インデントを有効に
 set autoindent
-" ソフトtabは基本的にナシ
+" タブまわりの設定
+set tabstop=4
+set softtabstop=0
+set shiftwidth=4
 set noexpandtab
 " 不可視文字の表示
 set list
+set lcs=tab:>.,eol:$,trail:_,extends:\
+highlight JpSpace cterm=underline ctermfg=Blue guifg=Blue
+au BufRead,BufNew * match JpSpace /　/
 " ステータスラインのカスタマイズ
 set laststatus=2
 :set statusline=%m%r\ [F=%{&fileencoding}\ %{&fileformat}]\ [T=%Y]\ [A=\%03.3b]\ [H=\%06.6B]\ [POS=%04l,%04v][%p%%]
@@ -33,7 +42,8 @@ set laststatus=2
 "-----------------------------------------------------------------------
 
 " .rbでタブ幅を2に変更
-au BufNewFile,BufRead *.rb set nowrap tabstop=2 shiftwidth=2 expandtab
+au BufNewFile,BufRead *.rb set tabstop=2 shiftwidth=2 expandtab
+au BufNewFile,BufRead *.php set tabstop=4 shiftwidth=4
 
 
 "-----------------------------------------------------------------------
@@ -63,6 +73,7 @@ Bundle 'thinca/vim-quickrun'
 Bundle 'violetyk/cake.vim'
 
 filetype plugin indent on
+filetype plugin on
 
 "-----------------------------------------------------------------------
 " プラグインの設定
