@@ -43,8 +43,14 @@ au BufNewFile,BufRead *.rb set nowrap tabstop=2 shiftwidth=2 expandtab
 set nocompatible
 filetype off
 
-set rtp+=~/.vim/vundle/
-call vundle#rc()
+"このif文が必要。
+if has("win32") || has("win64")
+  set rtp+=~/vimfiles/vundle/ 
+  call vundle#rc('~/vimfiles/bundle/')
+else
+  set rtp+=~/.vim/vundle/
+  call vundle#rc()
+endif
 
 Bundle 'gmarik/vundle'
 
