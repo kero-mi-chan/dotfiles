@@ -6,6 +6,9 @@
 set encoding=utf8
 " 80文字ラインを引く
 set textwidth=80
+if exists('&colorcolumn')
+set colorcolumn=+1
+endif
 " 構文ごとの色分け
 syntax on
 " カーソルを表示(しようと思ったけど、描画が劇的に遅くなったから停止)
