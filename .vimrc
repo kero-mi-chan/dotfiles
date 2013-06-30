@@ -74,6 +74,7 @@ Bundle 'Shougo/unite.vim'
 Bundle 'thinca/vim-ref'
 Bundle 'thinca/vim-quickrun'
 Bundle 'violetyk/cake.vim'
+Bundle 'The-NERD-Commenter'
 
 filetype plugin indent on
 filetype plugin on
@@ -125,3 +126,7 @@ nnoremap <silent> ,uu :<C-u>Unite buffer file_mru<CR>
 " 全部のせ
 nnoremap <silent> ,ua :<C-u>UniteWithBufferDir -bufer-name=files buffer file_mru bookmark file<CR>
 
+" The NERD Commenter の設定
+let NERDSpaceDelims = 1
+nmap <Leader>c <Plug>NERDCommenterToggle
+vmap <Leader>c <Plug>NERDCommenterToggle
